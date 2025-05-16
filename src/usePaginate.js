@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useFetch } from "./useFetch"; // Import your existing useFetch hook
 
-export function usePaginate(endpoint, initialPage = 1) {
-  const [page, setPage] = useState(initialPage);
+export function usePaginate(endpoint, limit, search) {
+  const [page, setPage] = useState(1);
 
   const { data, loading, setLoading, error } = useFetch(
-    `${endpoint}?page=${page}`
+    `${endpoint}?page=${page}&limit=${limit}&search=${search}`
   );
 
   const pagination = data
